@@ -1,0 +1,37 @@
+<ChasteBuildInfo>
+	<ProvenanceInfo>
+		<VersionString>2021.1.f7b6baf</VersionString> <!-- build specific -->
+		<IsWorkingCopyModified>1</IsWorkingCopyModified>
+		<BuildInformation>Release</BuildInformation>
+		<BuildTime>Tue, 16 Nov 2021 10:00:38 +0000</BuildTime>
+		<CurrentTime>Fri, 06 Jan 2023 23:56:29 +0000</CurrentTime>
+		<BuilderUnameInfo>Linux</BuilderUnameInfo>
+		<Projects>
+			<Project>
+				<Name>chaste_cellSims2</Name>
+				<Version>770b0f3de132f30da1754df8be9a44c72c69cb76</Version>
+				<Modified>True</Modified>
+			</Project>
+		</Projects>
+	</ProvenanceInfo>
+	<Compiler>
+		<NameAndVersion>/usr/bin/c++, version 9.3.0</NameAndVersion>
+		<Flags>-std=c++14 -Wall -Wnon-virtual-dtor -Woverloaded-virtual -Wextra -Wno-unused-parameter -Wvla -Wimplicit-fallthrough=2 -pthread -O3 -DNDEBUG</Flags>
+	</Compiler>
+	<Libraries>
+		<CompiledIn>
+			<PETSc>3.12.4</PETSc>
+			<Boost>1.71.0</Boost>
+			<HDF5>1.10.4</HDF5>
+			<Parmetis>4.0.3</Parmetis>
+		</CompiledIn>
+		<Binaries>
+			<XSD>4.0.0</XSD>
+		</Binaries>
+		<Optional>
+			<SUNDIALS>3.1.2</SUNDIALS>
+			<VTK>7.1</VTK>
+			<Xerces>3.2.2</Xerces>
+		</Optional>
+	</Libraries>
+</ChasteBuildInfo>

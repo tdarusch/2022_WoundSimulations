@@ -1,0 +1,21 @@
+Process 0 of 1.
+uname sysname  = Linux
+uname nodename = 51d5088163d5
+uname release  = 5.10.16.3-microsoft-standard-WSL2
+uname version  = #1 SMP Fri Apr 2 22:23:49 UTC 2021
+uname machine  = x86_64
+
+Information on number and type of processors:
+model name	: Intel(R) Core(TM) i5-6400 CPU @ 2.70GHz
+model name	: Intel(R) Core(TM) i5-6400 CPU @ 2.70GHz
+model name	: Intel(R) Core(TM) i5-6400 CPU @ 2.70GHz
+model name	: Intel(R) Core(TM) i5-6400 CPU @ 2.70GHz
+
+Information on processor caches, in the same order as above:
+cache size	: 6144 KB
+cache size	: 6144 KB
+cache size	: 6144 KB
+cache size	: 6144 KB
+
+Information on system memory:
+MemTotal:       13055284 kB
