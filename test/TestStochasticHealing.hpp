@@ -259,7 +259,11 @@ public:
             
 
 			OffLatticeSimulation<2> simulator(population);
+<<<<<<< HEAD
 			simulator.SetOutputDirectory("NewVariableDynamicShapeParamTests/3.0");
+=======
+			simulator.SetOutputDirectory("NewDynamicShapeParamTests/6.75");
+>>>>>>> 4fcdbccce3695b71927deac4651a35c8d36371f6
 			simulator.SetDt(.001);
 			simulator.SetEndTime(115);
 			simulator.SetSamplingTimestepMultiple(1000);
@@ -273,7 +277,11 @@ public:
 			MAKE_PTR(NagaiHondaForce<2>, p_force);
 			p_force->SetNagaiHondaDeformationEnergyParameter(55);
 			p_force->SetNagaiHondaMembraneSurfaceEnergyParameter(0.0);
+<<<<<<< HEAD
 			p_force->SetNagaiHondaCellCellAdhesionEnergyParameter(3.0);
+=======
+			p_force->SetNagaiHondaCellCellAdhesionEnergyParameter(6.75);
+>>>>>>> 4fcdbccce3695b71927deac4651a35c8d36371f6
 			p_force->SetNagaiHondaCellBoundaryAdhesionEnergyParameter(10);
 			simulator.AddForce(p_force);
 

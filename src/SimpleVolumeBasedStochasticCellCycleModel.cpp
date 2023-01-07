@@ -9,8 +9,11 @@
 #include "CellLabel.hpp"
 #include "Cell.hpp"
 #include "SmartPointers.hpp"
+<<<<<<< HEAD
 #include <stdlib.h>
 #include <time.h>
+=======
+>>>>>>> 4fcdbccce3695b71927deac4651a35c8d36371f6
 
 SimpleVolumeBasedStochasticCellCycleModel::SimpleVolumeBasedStochasticCellCycleModel()
     :mQuiescentVolumeFraction(0.812261*0.9)
@@ -23,6 +26,7 @@ void SimpleVolumeBasedStochasticCellCycleModel::SetG1Duration()
 {
     assert(mpCell != NULL);
 
+<<<<<<< HEAD
     //RandomNumberGenerator* p_gen = RandomNumberGenerator::Instance();
     //mG1Duration = 9 + 4*p_gen->ranf();
     srand(time(NULL));
@@ -34,6 +38,16 @@ void SimpleVolumeBasedStochasticCellCycleModel::SetG1Duration()
     else if (mpCell->GetCellProliferativeType()->IsType<TransitCellProliferativeType>())
     {
         mG1Duration = randomN;
+=======
+    RandomNumberGenerator* p_gen = RandomNumberGenerator::Instance();
+    if(mpCell->GetCellProliferativeType()->IsType<StemCellProliferativeType>())
+    {
+        mG1Duration = 9+4*p_gen->ranf();
+    }
+    else if (mpCell->GetCellProliferativeType()->IsType<TransitCellProliferativeType>())
+    {
+        mG1Duration = 9+4*p_gen->ranf();
+>>>>>>> 4fcdbccce3695b71927deac4651a35c8d36371f6
     }
     else if (mpCell->GetCellProliferativeType()->IsType<DifferentiatedCellProliferativeType>())
     {

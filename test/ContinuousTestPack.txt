@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Test3A.hpp
 Test3B.hpp
 Test3C.hpp
@@ -22,3 +23,15 @@ Test6C.hpp
 Test65A.hpp
 Test65B.hpp
 Test65C.hpp
+=======
+TestHello.hpp
+TestNagaiHondaMonolayer.hpp
+TestWelikyOsterMod.hpp
+TestVertexWoundHeal.hpp
+TestVertexActiveMigration.hpp
+TestRestrictedGeometries.hpp
+TestVertexCellSorting.hpp
+WoundHealSym.hpp
+TestModifiedHealing.hpp
+TestStochasticHealing.hpp
+>>>>>>> 4fcdbccce3695b71927deac4651a35c8d36371f6
