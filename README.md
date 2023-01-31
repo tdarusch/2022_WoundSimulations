@@ -26,12 +26,14 @@ As of ***01/30/2023*** the linked Ubuntu Terminal is running ***Ubuntu 22.04.1 L
 
 To verify your Ubuntu version, with the terminal open run `lsb_release -a`
 
-1. Open the Ubuntu Terminal after downloading and create a username & password (this does not have to match your Windows login).
+The Ubuntu terminal will launch and install both WSL 2 (if not already installed) and the Ubuntu 22.04. To complete the setup, you will be prompted to restart your machine (**Error 0x80004002 should be resolved this way**).
+
+1. Open the Ubuntu Terminal after restarting and create a username & password (this does not have to match your Windows login).
 2. Run `sudo apt update` to install the latest updates. Enter your password when prompted.
 
 *** 
 ### Setting up remote development (VSCode) & Docker
-1. Download, install, and configure Docker by following the accompanying prompts.
+1. Download, install, and configure Docker by following the accompanying prompts. Select **Use WSL 2 instead of Hyper-V** (Default)
 2. After Docker is properly configured and running (program will indicate 'Engine Running' when properly set up) open the Ubuntu Terminal
 3. ***The easiest way to run the latest Chaste release is by running*** `docker run -it --init --rm -v chaste_data:/home/chaste chaste/release`
 
