@@ -24,12 +24,12 @@
 ### Setting up Ubuntu Terminal
 As of ***01/30/2023*** the linked Ubuntu Terminal is running ***Ubuntu 22.04.1 LTS***.
 
-To verify your Ubuntu version, with the terminal open run `lsb_release -a`
+The Ubuntu terminal will launch and install both WSL 2 (if not already installed) and the Ubuntu 22.04. To complete the setup, you will be prompted to restart your machine. **Error 0x80004002** presents when attempting to run the terminal without a restart.
 
-The Ubuntu terminal will launch and install both WSL 2 (if not already installed) and the Ubuntu 22.04. To complete the setup, you will be prompted to restart your machine (**Error 0x80004002 should be resolved this way**).
-
-1. Open the Ubuntu Terminal after restarting and create a username & password (this does not have to match your Windows login).
+1. Open the Ubuntu Terminal after restarting & finishing the install. Create a username & password (this does not have to match your Windows login).
 2. Run `sudo apt update` to install the latest updates. Enter your password when prompted.
+
+To verify your Ubuntu version, with the terminal open run `lsb_release -a`
 
 *** 
 ### Setting up remote development (VSCode) & Docker
