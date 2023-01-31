@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="10"                   NumberOfCells="2"                   >
+      <PointData>
+      </PointData>
+      <CellData>
+        <DataArray type="Float64" Name="Ages" format="appended" RangeMin="3.331440507"          RangeMax="3.4635338493"         offset="0"                   />
+        <DataArray type="Float64" Name="Ancestors" format="appended" RangeMin="-1"                   RangeMax="-1"                   offset="28"                  />
+        <DataArray type="Float64" Name="Cell IDs" format="appended" RangeMin="0"                    RangeMax="1"                    offset="56"                  />
+        <DataArray type="Float64" Name="Mutation states" format="appended" RangeMin="0"                    RangeMax="0"                    offset="84"                  />
+        <DataArray type="Float64" Name="Cycle phases" format="appended" RangeMin="0"                    RangeMax="0"                    offset="112"                 />
+        <DataArray type="Float64" Name="Prolif Cell types" format="appended" RangeMin="2"                    RangeMax="2"                    offset="140"                 />
+        <DataArray type="Float64" Name="Cell volumes" format="appended" RangeMin="0.8289600507"         RangeMax="0.8289600507"         offset="168"                 />
+        <DataArray type="Float64" Name="Cell labels" format="appended" RangeMin="0"                    RangeMax="0"                    offset="196"                 />
+        <DataArray type="Float64" Name="Legacy Cell types" format="appended" RangeMin="2"                    RangeMax="2"                    offset="224"                 />
+        <DataArray type="Float64" Name="target area" format="appended" RangeMin="1"                    RangeMax="1"                    offset="252"                 />
+        <DataArray type="Float64" Name="volume" format="appended" RangeMin="0.8289600507"         RangeMax="0.8289600507"         offset="280"                 />
+      </CellData>
+      <Points>
+        <DataArray type="Float64" Name="Vertex positions" NumberOfComponents="3" format="appended" RangeMin="0.22260657162"        RangeMax="1.7646017908"         offset="308"                 />
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="appended" RangeMin=""                     RangeMax=""                     offset="636"                 />
+        <DataArray type="Int64" Name="offsets" format="appended" RangeMin=""                     RangeMax=""                     offset="772"                 />
+        <DataArray type="UInt8" Name="types" format="appended" RangeMin=""                     RangeMax=""                     offset="800"                 />
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+  <AppendedData encoding="base64">
+   _EAAAAPbZ0UfKpgpAbCcaPFG1C0A=EAAAAAAAAAAAAPC/AAAAAAAA8L8=EAAAAAAAAAAAAAAAAAAAAAAA8D8=EAAAAAAAAAAAAAAAAAAAAAAAAAA=EAAAAAAAAAAAAAAAAAAAAAAAAAA=EAAAAAAAAAAAAABAAAAAAAAAAEA=EAAAAMvWbTrXhuo/zNZtOteG6j8=EAAAAAAAAAAAAAAAAAAAAAAAAAA=EAAAAAAAAAAAAABAAAAAAAAAAEA=EAAAAAAAAAAAAPA/AAAAAAAA8D8=EAAAAMvWbTrXhuo/zNZtOteG6j8=8AAAADvw7NrFjNA/fzAbm+Zowb8AAAAAAAAAAPLDRInO3PM/gTAbm+Zowb8AAAAAAAAAAP9JtbH2QMC/Ut6fQy5nxz8AAAAAAAAAAAAAAAAAAOg/Z4pZRpSNpb8AAAAAAAAAAECpNtYeCPo/Sd6fQy5nxz8AAAAAAAAAAPxJtbH2QMC/D1VwV6/c5T8AAAAAAAAAAAAAAAAAAOg/SeW9LFQP7T8AAAAAAAAAAEGpNtYeCPo/C1VwV6/c5T8AAAAAAAAAAD/w7NrFjNA/YYyPR1oI8D8AAAAAAAAAAPLDRInO3PM/YYyPR1oI8D8AAAAAAAAAAA==YAAAAAAAAAAAAAAAAwAAAAAAAAAGAAAAAAAAAAgAAAAAAAAABQAAAAAAAAACAAAAAAAAAAEAAAAAAAAABAAAAAAAAAAHAAAAAAAAAAkAAAAAAAAABgAAAAAAAAADAAAAAAAAAA==EAAAAAYAAAAAAAAADAAAAAAAAAA=AgAAAAcH
+  </AppendedData>
+</VTKFile>

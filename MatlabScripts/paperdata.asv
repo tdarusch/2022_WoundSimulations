@@ -1,0 +1,357 @@
+table_size = size(shapeparam);
+rows = table_size(1);
+
+Time = 0:.035:10;
+SP3 = double(rows);
+SP4 = double(rows);
+SP5 = double(rows);
+SP6 = double(rows);
+SP3_5 = double(rows);
+SP4_5 = double(rows);
+SP5_5 = double(rows);
+SP6_5 = double(rows);
+BC3 = single(rows);
+BC4 = single(rows);
+BC5 = single(rows);
+BC6 = single(rows);
+BC3_5 = single(rows);
+BC4_5 = single(rows);
+BC5_5 = single(rows);
+BC6_5 = single(rows);
+AP3 = double(rows);
+AP3_5 = double(rows);
+AP4 = double(rows);
+AP4_5 = double(rows);
+AP5 = double(rows);
+AP5_5 = double(rows);
+AP6 = double(rows);
+AP6_5 = double(rows);
+
+%3
+for row = 1:rows
+    avg = 0.0;
+    iter = 0;
+    avgt = shapeparam{row,:};
+    for i = 1:length(avgt)
+        if str2double(avgt(i)) > 0.0
+            iter = iter + 1;
+            avg = avg + str2double(avgt(i));
+        end
+    end
+    if iter > 0
+        disp("Sum:" + avg);
+        disp("Cells:" + iter)
+        SP3(row) = (avg/iter);
+        BC3(row) = iter;
+    else
+        SP3(row) = 0;
+        BC3(row) = 0;
+    end
+end
+disp("3.0 Complete");
+%4
+for row = 1:rows
+    avg = 0.0;
+    iter = 0;
+    avgt = shapeparam1{row,:};
+    for i = 1:length(avgt)
+        if str2double(avgt(i)) > 0.0
+            iter = iter + 1;
+            avg = avg + str2double(avgt(i));
+        end
+    end
+    if iter > 0
+        disp("Sum:" + avg);
+        disp("Cells:" + iter)
+        SP4(row) = (avg/iter);
+        BC4(row) = iter;
+    else
+        SP4(row) = 0;
+        BC4(row) = 0;
+    end
+end
+disp("4.0 Complete");
+%5
+for row = 1:rows
+    avg = 0.0;
+    iter = 0;
+    avgt = shapeparam2{row,:};
+    for i = 1:length(avgt)
+        if str2double(avgt(i)) > 0.0
+            iter = iter + 1;
+            avg = avg + str2double(avgt(i));
+        end
+    end
+    if iter > 0
+        disp("Sum:" + avg);
+        disp("Cells:" + iter)
+        SP5(row) = (avg/iter);
+        BC5(row) = iter;
+    else
+        SP5(row) = 0;
+        BC5(row) = 0;
+    end
+end
+disp("5.0 Complete");
+%6
+for row = 1:rows
+    avg = 0.0;
+    iter = 0;
+    avgt = shapeparam3{row,:};
+    for i = 1:length(avgt)
+        if str2double(avgt(i)) > 0.0
+            iter = iter + 1;
+            avg = avg + str2double(avgt(i));
+        end
+    end
+    if iter > 0
+        disp("Sum:" + avg);
+        disp("Cells:" + iter)
+        SP6(row) = (avg/iter);
+        BC6(row) = iter;
+    else
+        SP6(row) = 0;
+        BC6(row) = 0;
+    end
+end
+disp("6.0 Complete");
+%6.5
+for row = 1:rows
+    avg = 0.0;
+    iter = 0;
+    avgt = shapeparam4{row,:};
+    for i = 1:length(avgt)
+        if str2double(avgt(i)) > 0.0
+            iter = iter + 1;
+            avg = avg + str2double(avgt(i));
+        end
+    end
+    if iter > 0
+        disp("Sum:" + avg);
+        disp("Cells:" + iter)
+        SP6_5(row) = (avg/iter);
+        BC6_5(row) = iter;
+    else
+        SP6_5(row) = 0;
+        BC6_5(row) = 0;
+    end
+end
+disp("6.5 Complete");
+%3.5
+for row = 1:rows
+    avg = 0.0;
+    iter = 0;
+    avgt = shapeparam5{row,:};
+    for i = 1:length(avgt)
+        if str2double(avgt(i)) > 0.0
+            iter = iter + 1;
+            avg = avg + str2double(avgt(i));
+        end
+    end
+    if iter > 0
+        disp("Sum:" + avg);
+        disp("Cells:" + iter)
+        SP3_5(row) = (avg/iter);
+        BC3_5(row) = iter;
+    else
+        SP3_5(row) = 0;
+        BC3_5(row) = 0;
+    end
+end
+disp("3.5 Complete");
+%4.5
+for row = 1:rows
+    avg = 0.0;
+    iter = 0;
+    avgt = shapeparam6{row,:};
+    for i = 1:length(avgt)
+        if str2double(avgt(i)) > 0.0
+            iter = iter + 1;
+            avg = avg + str2double(avgt(i));
+        end
+    end
+    if iter > 0
+        disp("Sum:" + avg);
+        disp("Cells:" + iter)
+        SP4_5(row) = (avg/iter);
+        BC4_5(row) = iter;
+    else
+        SP4_5(row) = 0;
+        BC4_5(row) = 0;
+    end
+end
+disp("4.5 Complete");
+%5.5
+for row = 1:rows
+    avg = 0.0;
+    iter = 0;
+    avgt = shapeparam7{row,:};
+    for i = 1:length(avgt)
+        if str2double(avgt(i)) > 0.0
+            iter = iter + 1;
+            avg = avg + str2double(avgt(i));
+        end
+    end
+    if iter > 0
+        disp("Sum:" + avg);
+        disp("Cells:" + iter)
+        SP5_5(row) = (avg/iter);
+        BC5_5(row) = iter;
+    else
+        SP5_5(row) = 0;
+        BC5_5(row) = 0;
+    end
+end
+disp("5.5 Complete");
+disp(" ");
+disp("-Starting Area-");
+
+%3.0 Area
+for row = 1:rows
+    sum = 0.0;
+    avgt = x3_0{row,:};
+    for i = 1:length(avgt)
+        if(mod(i, 5) == 0)
+            sum = sum + str2double(avgt(i));
+        end
+    end
+    AP3(row) = (225.0 - sum);
+end
+disp("3.0 Area Complete");
+
+%3.5 Area
+for row = 1:rows
+    sum = 0.0;
+    avgt = x3_5{row,:};
+    for i = 1:length(avgt)
+        if(mod(i, 5) == 0)
+            sum = sum + str2double(avgt(i));
+        end
+    end
+    AP3_5(row) = (225.0 - sum);
+end
+disp("3.5 Area Complete");
+
+%4.0 Area
+for row = 1:rows
+    sum = 0.0;
+    avgt = x4_0{row,:};
+    for i = 1:length(avgt)
+        if(mod(i, 5) == 0)
+            sum = sum + str2double(avgt(i));
+        end
+    end
+    AP4(row) = (225.0 - sum);
+end
+disp("4.0 Area Complete");
+
+%4.5 Area
+for row = 1:rows
+    sum = 0.0;
+    avgt = x4_5{row,:};
+    for i = 1:length(avgt)
+        if(mod(i, 5) == 0)
+            sum = sum + str2double(avgt(i));
+        end
+    end
+    AP4_5(row) = (225.0 - sum);
+end
+disp("4.5 Area Complete");
+
+%5.0 Area
+for row = 1:rows
+    sum = 0.0;
+    avgt = x5_0{row,:};
+    for i = 1:length(avgt)
+        if(mod(i, 5) == 0)
+            sum = sum + str2double(avgt(i));
+        end
+    end
+    A5(row) = (225.0 - sum);
+end
+disp("5.0 Area Complete");
+
+%5.5 Area
+for row = 1:rows
+    sum = 0.0;
+    avgt = x5_5{row,:};
+    for i = 1:length(avgt)
+        if(mod(i, 5) == 0)
+            sum = sum + str2double(avgt(i));
+        end
+    end
+    A5_5(row) = (225.0 - sum);
+end
+disp("5.5 Area Complete");
+
+close all
+figure();
+plot(Time, BC3);
+hold on
+plot(Time, BC3_5);
+hold on
+plot(Time, BC4);
+hold on
+plot(Time, BC4_5);
+hold on
+plot(Time, BC5);
+hold on
+plot(Time, BC5_5);
+hold on
+plot(Time, BC6);
+hold on
+plot(Time, BC6_5);
+hold off
+legend({'\gamma = 3.0','\gamma = 3.5','\gamma = 4.0', '\gamma = 4.5','\gamma = 5.0', '\gamma = 5.5', '\gamma = 6.0', '\gamma = 6.5'},'Location','northeast');
+title('Cells Bordering Wound Area Over Time');
+xlabel('Time (h)');
+ylabel('Border Cell Count');
+xlim([0,1.1]);
+
+figure();
+plot(Time, SP3);
+hold on
+plot(Time, SP3_5);
+hold on
+plot(Time, SP4);
+hold on
+plot(Time, SP4_5);
+hold on
+plot(Time, SP5);
+hold on
+plot(Time, SP5_5);
+hold on
+plot(Time, SP6);
+hold on
+plot(Time, SP6_5);
+hold off
+legend({'\gamma = 3.0','\gamma = 3.5','\gamma = 4.0', '\gamma = 4.5','\gamma = 5.0', '\gamma = 5.5', '\gamma = 6.0', '\gamma = 6.5'},'Location','northeast');
+title('Average Border Cell Shape Parameter Over Time');
+xlabel('Time (h)');
+ylabel('Average Shape Parameter');
+xlim([0,1]);
+ylim([3.9,4.8]);
+
+figure()
+plot(Time, AP3);
+hold on
+plot(Time, AP3_5);
+hold on
+plot(Time, AP4);
+hold on
+plot(Time, AP4_5);
+hold on
+plot(Time, AP5);
+hold on
+plot(Time, AP5_5);
+hold on
+plot(Time, AP6);
+hold on
+plot(Time, AP6_5);
+hold off
+legend({'\gamma = 3.0','\gamma = 3.5','\gamma = 4.0', '\gamma = 4.5','\gamma = 5.0', '\gamma = 5.5', '\gamma = 6.0', '\gamma = 6.5'},'Location','northeast');
+title('Wound Area Over Time');
+xlabel('Time (h)');
+ylabel('Wound Area');
+xlim([0,1]);
+ylim([0,40]);

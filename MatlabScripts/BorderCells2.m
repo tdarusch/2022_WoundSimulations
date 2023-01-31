@@ -1,0 +1,51 @@
+time_b3 = 0:0.035:.385;
+time_b35 = 0:0.035:.455;
+time_b4 = 0:0.035:.49;
+time_b45 = 0:0.035:.49;
+time_b5 = 0:0.035:.735;
+time_b55 = 0:0.035:.665;
+time_b6 = 0:0.035:1.505;
+time_b65 = 0:0.035:1.12;
+
+b3 = [30	28	26	24	23	22	19	16	13	10.5	5 0; 27	28	27	22	21	21	19	16	15	11	5 0; 28	26	24	23	22	18	18	17	13	10	5 0];
+b35 = [23	29	28	25	23	21	18	17	17	13	12	8	4 0; 24	28	26	26	23	23	22	20	19	16	13	10	4 0; 29	28	26	25	21	20	17	17	14	8	12.5	9	4 0];
+b4 = [27	30	28	26	24	23	20	17	16	14	8	6	9	9 0; 25	25	24	23	23	20	18	18	16	15	12	11	7	9 0; 30	28	27	27	27	24	21	21	20	20	15	13	11	9 0];
+b45 = [30	28	27	25	22	21	21	21	17	15	13	11	8	7 0; 28	28	28	28	25	24	22	22	18	16	15	14	12	7 0; 30	28	27	27	26	23	22	18	16	13	10	5	10	7 0];
+b5 = [30	32	30	25	24	21	20	20	20	17	16	14	12	12	10	13	9	12	11	9	6 0; 21	26	25	23	23	23	22	22	22	20	20	19	18	17	17	15	13	12	11	9	6 0; 25	25	25	23	23	22	22	20	19	18	18	17	15	13	12	11	5	12	11	9	6 0];
+b55 = [26	28	27	26	26	21	20	17	17	16	15	15	14	12	11	10	9	8	6 0; 26	30	27	27	26	26	25	23	22	22	19	18	16	13	11	10	8	8	6 0; 25	26	25	25	24	23	23	22	22	21	21	20	20	18	16	14	12	8	6 0];
+b6 = [23	26	28	26	25	24	24	24	24	22	21	21	21	21	20	19	18	18	18	18	18	18	16	16	16	15	15	14	13	13	13	13	13	13	12	12	10	10	9	9	8	7	5 0; 25	29	26	24	24	23	21	21	20	18	18	17	17	17	17	16	13	12	10	7	5	16.5	15	14	14	13.5	12	11.5	10.5	10	10	9.5	13	13	12	12	10	10	9	9	8	7	5 0; 19	26	29	27	27	26	23	23	22	22	21	21	20	20	20	20	20	18	17	17	16	15	14	12	12	12	9	9	8	7	7	6	13	13	12	12	10	10	9	9	8	7	5 0];
+b65 = [23	28	27	26	26	25	25	23	23	21	20	20	19	18	16	16	16	16	16	16	15	15	14	13	13	13	12	11	10	9	8	3 0; 26	27	26	25	25	24	22	22	22	21	20	17	17	16	15	14	13	12	12	11	10	9	8	7	6	6	6	6	9.5	8	5.5	3 0; 21	26	26	25	25	25	25	25	24	23	23	23	22	21	20	20	20	20	19	18	17	17	16	15	12	11	10	10	9	7	3	3 0];
+
+close all
+figure;
+shadedErrorBar(time_b3, b3, {@mean,@std}, 'lineprops', {'Color', '#a32121', 'linewidth', 2.75});
+hold on
+shadedErrorBar(time_b35, b35, {@mean,@std}, 'lineprops', {'Color', '#f5ab49', 'linewidth', 2.75});
+hold on
+shadedErrorBar(time_b4, b4, {@mean,@std}, 'lineprops', {'Color', '#3f21a3', 'linewidth', 2.75});
+hold on
+shadedErrorBar(time_b45, b45, {@mean,@std}, 'lineprops', {'Color', '#d4c32a', 'linewidth', 2.75});
+hold on
+shadedErrorBar(time_b5, b5, {@mean,@std}, 'lineprops', {'Color', '#d192de', 'linewidth', 2.75});
+hold on
+shadedErrorBar(time_b55, b55, {@mean,@std}, 'lineprops', {'Color', '#51a321', 'linewidth', 2.75});
+hold on
+shadedErrorBar(time_b6, b6, {@mean,@std}, 'lineprops', {'Color', '#21a39d', 'linewidth', 2.75});
+hold on
+shadedErrorBar(time_b65, b65, {@mean,@std}, 'lineprops', {'Color', '#4d4d4d', 'linewidth', 2.75});
+hold off
+legend({'\gamma = 3.0','\gamma = 3.5','\gamma = 4.0', '\gamma = 4.5','\gamma = 5.0', '\gamma = 5.5', '\gamma = 6.0', '\gamma = 6.5'},'Location','northeast', 'FontSize', 13);
+title('Wound Border Cells Over Time', 'FontSize', 16, 'FontWeight', 'bold')
+xlabel('Time (h)', 'FontSize', 14, 'FontWeight', 'bold');
+ylabel('Border Cells', 'FontSize', 14, 'FontWeight', 'bold');
+xlim([0 1.5]);
+ylim([0 35]);
+
+figure;
+shadedErrorBar(time_b3, b3, {@mean,@std}, 'lineprops', {'Color', '#a32121', 'linewidth', 2.75});
+legend({'\gamma = 3.0'},'Location','northeast', 'FontSize', 13);
+title('Wound Border Cells Over Time', 'FontSize', 16, 'FontWeight', 'bold')
+xlabel('Time (h)', 'FontSize', 14, 'FontWeight', 'bold');
+ylabel('Border Cells', 'FontSize', 14, 'FontWeight', 'bold');
+xlim([0 1.5]);
+ylim([0 35]);
