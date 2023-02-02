@@ -95,4 +95,4 @@ where `${components}` are the components the project depends on. For this projec
 
 ***
 
-### Some source method in my build have been modified for our tests to work properly, I will revise and indicate which methods/classes in the Chaste src need to be modified for proper compilation.
+### Some source dependencies in my build have been modified for our tests to work properly, I will revise and indicate which methods/classes in the Chaste src need to be modified for proper compilation.
