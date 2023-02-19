@@ -1,3 +1,38 @@
+/*
+
+Copyright (c) 2005-2015, University of Oxford.
+All rights reserved.
+
+University of Oxford means the Chancellor, Masters and Scholars of the
+University of Oxford, having an administrative office at Wellington
+Square, Oxford OX1 2JD, UK.
+
+This file is part of Chaste.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+ * Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+ * Neither the name of the University of Oxford nor the names of its
+   contributors may be used to endorse or promote products derived from this
+   software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+*/
+
 #ifndef TESTNAGAIHONDAMONOLAYER_HPP_
 #define TESTNAGAIHONDAMONOLAYER_HPP_
 
@@ -59,24 +94,6 @@
 #include "VoronoiDataWriter.hpp"
 #include <stdexcept>
 
-class BorderCellMutationState : public AbstractCellMutationState
-{
-private:
-
-    friend class boost::serialization::access;
-    template<class Archive>
-    void serialize(Archive & archive, const unsigned int version)
-    {
-        archive & boost::serialization::base_object<AbstractCellMutationState>(*this);
-    }
-
-public:
-    BorderCellMutationState()
-        : AbstractCellMutationState(4)
-    {
-    }
-};
-
 class TestNagaiHondaMonolayer : public AbstractCellBasedTestSuite
 {
 private:
@@ -95,6 +112,12 @@ private:
         AbstractCellBasedTestSuite::tearDown();
     }
 
+	/**
+     * Method for turning off division after mesh growth is complete. Iterates over a given cell population and uses
+     * SetCellProliferativeType() to assign a differentiated proliferative type to all cells in the passed in population. 
+     * 
+     * @param rCellPopulation given cell population
+     */
     void preventDivision(AbstractCellPopulation<2>& rCellPopulation){
         MAKE_PTR(DifferentiatedCellProliferativeType, p_diff);
         for(AbstractCellPopulation<2>::Iterator cell_iter = rCellPopulation.Begin();
@@ -104,6 +127,16 @@ private:
             }
     }
 
+	/**
+     * From A. G. Fletcher et al.
+     * 
+     * Helper Method. Assigns the Stochastic Area-Dependent Cell Cycle Model to the initial cells in a new population.
+     * Takes in a std::vector<CellPtr> of cells, the number of cells, and the contact-dependent coefficient to assign to cells.
+     * 
+     * @param rCells A std::vector<CellPtr>& of cells
+     * @param numCells an int >0 of the number of cells passed in
+     * @param quiescentVolumeFraction a double corresponding to the contact-dependent coefficient
+     */
 	void SetUpCellsWithStochasticAreaDependentCellCycleModel(std::vector<CellPtr>& rCells, unsigned numCells, double quiescentVolumeFraction)
 	{
 		rCells.clear();
@@ -130,6 +163,18 @@ private:
 	}
 
 public:
+	/**
+     * From A. G. Fletcher et al with modifications.
+     * 
+     * Main method, responsible for initializing mesh and running simulation. This is an isolated test of the affect of increasing/decreasing the intercellular
+	 * contact adhesion coefficient on a mesh constrainted to two cells who cannot divide. Our tested values in this simulation were Yc-c = 3.5 & 6.5, in accordance
+	 * with the range of trials we conducted where wound healing was analyzed.
+	 * 
+	 * To run this simulation, we initialize a mesh of two cells using Fletcher's SetUpCellsWithStochastic[...]() method to assign the contact-dependent cell model
+	 * to the cells, although this does not impact the simulation as division is prevented. However, to preserve the same conditions present in our wound-healing simulations
+	 * we opted to initialize the simulation in an identical fashion. PreventDivision() differentiates the two cells so they cannot divide after creation, and this
+	 * simulation proceeds for 2h with dT = .001h and a 1:1 sampling multiple. 
+	 * */
 	void TestNagaiHondaMonolayerClass() throw (Exception)
 	{
 		try {

@@ -1,3 +1,39 @@
+/*
+
+Copyright (c) 2005-2015, University of Oxford.
+All rights reserved.
+
+University of Oxford means the Chancellor, Masters and Scholars of the
+University of Oxford, having an administrative office at Wellington
+Square, Oxford OX1 2JD, UK.
+
+This file is part of Chaste.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+ * Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+ * Neither the name of the University of Oxford nor the names of its
+   contributors may be used to endorse or promote products derived from this
+   software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+*/
+
+
 #ifndef TESTNAGAIHONDAMONOLAYER_HPP_
 #define TESTNAGAIHONDAMONOLAYER_HPP_
 
@@ -59,6 +95,10 @@
 #include "VoronoiDataWriter.hpp"
 #include <stdexcept>
 
+/**
+ * Helper Class. Acts as a new mutation state to assign to cells on the border of the wound in
+ * LabelCellsAroundWound()
+*/
 class BorderCellMutationState : public AbstractCellMutationState
 {
 private:
@@ -80,7 +120,6 @@ public:
 class TestNagaiHondaMonolayer : public AbstractCellBasedTestSuite
 {
 private:
-
 	double mLastStartTime;
     void setUp()
     {
@@ -96,6 +135,8 @@ private:
     }
 
     /**
+     * From A. G. Fletcher et al.
+     * 
      * Helper method. Smooth out edges of a vertex mesh.
      * 
      * @param rCellPopulation a cell population
@@ -125,6 +166,12 @@ private:
         r_mesh.ReMesh();
     }
 
+    /**
+     * Method for turning off division after mesh growth is complete. Iterates over a given cell population and uses
+     * SetCellProliferativeType() to assign a differentiated proliferative type to all cells in the passed in population. 
+     * 
+     * @param rCellPopulation given cell population
+     */
     void preventDivision(AbstractCellPopulation<2>& rCellPopulation){
         MAKE_PTR(DifferentiatedCellProliferativeType, p_diff);
         for(AbstractCellPopulation<2>::Iterator cell_iter = rCellPopulation.Begin();
@@ -134,6 +181,14 @@ private:
             }
     }
 
+    /**
+     * Method for creating a circular wound in a given mesh. Takes in a vertex-based cell population and an integer radius
+     * that corresponds to the desired wound size. Removal is accomplished by normalizing the axes to center at (0,0), finding the vector
+     * position of cells relative to this center, and removing all cells where sqrt(x_pos^2 + y_pos^2) < radius,
+     * 
+     * @param rCellPopulation given cell population
+     * @param radius desired radius
+     */
     void CreateCircularHoleInPopulation(AbstractCellPopulation<2>& rCellPopulation,
     double radius){
         for(AbstractCellPopulation<2>::Iterator cell_iter = rCellPopulation.Begin();
@@ -151,6 +206,11 @@ private:
         dynamic_cast<VertexBasedCellPopulation<2>* >(&rCellPopulation)->Update();
     }
 
+    /**
+     * Rudimentary method; sets a mutation state for cells bordering the wound area as a function of area.
+     * 
+     * @param rCellPopulation given cell population
+     */
     void LabelCellsAroundWound(AbstractCellPopulation<2>& rCellPopulation){
         MAKE_PTR(BorderCellMutationState, p_state);
         for(AbstractCellPopulation<2>::Iterator cell_iter = rCellPopulation.Begin(); cell_iter != rCellPopulation.End(); ++cell_iter){
@@ -167,6 +227,8 @@ private:
         }
 
     /**
+     * From A. G. Fletcher et al.
+     * 
      * Helper method. Iterate over all cells and define the 'hole' by
      * killing those cells whose centres are located in a given region.
      * 
@@ -208,6 +270,16 @@ private:
         
     }
 
+    /**
+     * From A. G. Fletcher et al.
+     * 
+     * Helper Method. Assigns the Stochastic Area-Dependent Cell Cycle Model to the initial cells in a new population.
+     * Takes in a std::vector<CellPtr> of cells, the number of cells, and the contact-dependent coefficient to assign to cells.
+     * 
+     * @param rCells A std::vector<CellPtr>& of cells
+     * @param numCells an int >0 of the number of cells passed in
+     * @param quiescentVolumeFraction a double corresponding to the contact-dependent coefficient
+     */
 	void SetUpCellsWithStochasticAreaDependentCellCycleModel(std::vector<CellPtr>& rCells, unsigned numCells, double quiescentVolumeFraction)
 	{
 		rCells.clear();
@@ -234,6 +306,21 @@ private:
 	}
 
 public:
+    /**
+     * From A. G. Fletcher et al with modifications.
+     * 
+     * Main method, responsible for initializing mesh and subsequent wound. The process for running this simulation is broken into two distinct segments: Mesh Growth and Wound Healing.
+     * 
+     * Mesh Growth: Using the force model developed by Nagai & Honda, the Stochastic Area-Dependent Cell Cycle Model from Fletcher et al., grow a mesh of size
+     * 15 x 15, beginning with a single parent cell. Here, the parameters for the force model are unchanged from Fletcher et al.'s simulations aside from the
+     * intercellular contact adhesion coefficient. This is variable and corresponds to the name of the .hpp file.
+     * 
+     * Wound Healing: Again using the Nagai-Honda force model and some helper methods from Fletcher et al. alongside our own helper methods, we remove a circular
+     * section of cells in the center of the mesh. Moreover, we disable cell division and decrease the dT, sampling multiple, and endTime.
+     * 
+     * Outside helper classes such as ShapeParamWriter and the modified T1SwapWriter class are used in addition to built-in Chaste Cell/Population writers to
+     * collect data. These data are then exported and analyzed via a combination of external python scripts and visualized using MATLAB.
+     */
 	void TestNagaiHondaMonolayerClass() throw (Exception)
 	{
 		try {
